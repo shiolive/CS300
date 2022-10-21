@@ -1,0 +1,55 @@
+//prints single course info and prereqs
+void CourseBinary::printCourseInfo(Node* currentNode, string courseNum){
+	while (currentNode != nullptr){ //while current node NOT null
+		if (currentNode->course.courseNum.compare(courseNum) == 0){ //if course num matches current coursenum
+			cout << currentNode->course.courseNum << ", "; //print course num
+			cout << currentNode->course.courseName << endl; //print course name
+			int size = numPreReq(currentNode->course);
+			cout << "Prerequisites: "; //print prereqs
+			int i = 0;
+			for (i = 0; i < size; i++){ //traverse prereq vector to print all
+				cout << currentNode->course.PreReqs.at(i);
+				if (i != size - 1){ //if more than one, add comma
+					cout << ", ";
+				}
+			}
+			if(i == 0){ //if no prereqs exist, print none required
+				cout << "No prerequisites required." << endl;
+				return; //stop search
+			} //if coursenum is smaller than current coursenum, go left
+		else if (courseNum.compare(currentNode->course.courseNum)< 0){
+				currentNode = currentNode->left;
+			}
+		else{ //else go right
+				currentNode = currentNode->right;
+			}
+		}
+	}
+}
+
+void loadCourses(string csvPath, CourseBinary* CourseBinary){ //load course
+	ifstream inFile(csvPath, ios::in); //open course file from input
+
+	if (inFile.is_open()){ //if file open
+		while (!inFile.eof()){
+			vector<string> courseInfo; //vector to hold info
+			string substr;
+
+			getline(inFile, substr, ','); //get line, stop at comma
+			while(substr.length() > 0){ //while substr not empty
+				courseInfo.push_back(substr);
+				}
+			Course course;
+			course.courseNum = courseInfo[0]; //load separated files into course
+			course.courseName = courseInfo[1]; //insert items into binary tree
+
+			for (int i=  2; i < courseInfo.size(); i++){
+				course.PreReqs.push_back(courseInfo[i]);
+			}
+			CourseBinary->Insert(course);
+
+			}
+		inFile.close(); //close file
+		}
+	}
+
