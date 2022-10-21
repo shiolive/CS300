@@ -1,0 +1,8 @@
+
+A vector stores an array of objects as a simple list. The Vector data structure has the lowest total cost in the runtime analysis with the most efficient runtime and the simplest structure. The advantages of a vector is the ability to delete and insert items. 
+
+A hash table stores data as key-value pairs. Each data value has a key that is often used for identifying/searching the values. Hash tables have many benefits, such as the fast access to their data and the large amount of data they can store. The limitations of hash tables are the ability to produce duplicate keys and the data structure is overall difficult to implement. The hash table data structure has the highest total cost and the most complex structure. 
+
+Binary Trees are a tree-like data structure that begins with a “root” and is connected to at most two nodes, or children. The tree expands from one at the top to many nodes a the bottom. The advantages of using a binary tree is that it reflects the relationship between data points and can expand to store a large amount of values. The downsides of a binary tree are that the insertion, deletion, and search operations are complex and depend much on the height of the tree. The binary tree is in between the other two on total cost and complexity.
+
+For this structure, I would choose the hash table because it has the most organized approach to storing the data needed for ABCU. I would store each course number as the key and all of the information for it as values. 
